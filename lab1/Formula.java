@@ -31,11 +31,15 @@ public class Formula {
 
     public static void print_matrix(float[][] matrix) {
         for (int i = 0; i < matrix.length; i++) {
-            String[] components = new String[matrix[i].length];
+            // String[] components = new String[matrix[i].length];
+            // for (int j = 0; j < matrix[i].length; j++) {
+            //     components[j] = String.format("%.5f", matrix[i][j]);
+            // }
+            // System.out.println(String.join(" ", components));
             for (int j = 0; j < matrix[i].length; j++) {
-                components[j] = String.format("%.5f", matrix[i][j]);
+                System.out.print(String.format("%.5f ", matrix[i][j]));
             }
-            System.out.println(String.join(" ", components));
+        System.out.println();
         }
     }
 }

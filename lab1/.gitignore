@@ -1,0 +1,21 @@
+**/target/
+/target/
+*/target/*
+.classpath
+.project
+.settings
+**/bin/
+/bin/
+*/bin/*
+**/out/
+/out/
+*/out/*
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+*.iml
+*.idea
+.vscode
