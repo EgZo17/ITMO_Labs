@@ -6,4 +6,13 @@ public class TasksUndoneException extends RuntimeException {
         super(message);
     }
 
+    @Override
+    public String getMessage() {
+        return "Ошибка выполнения целей: " + super.getMessage();
+    }
+    
+    @Override
+    public String toString() {
+        return "TasksUndoneException: " + getMessage();
+    }
 }
