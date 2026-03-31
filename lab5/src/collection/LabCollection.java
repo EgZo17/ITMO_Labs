@@ -30,10 +30,8 @@ public class LabCollection {
         return collection;
     }
 
-    public void setCollection(LinkedList<LabWork> collection) {
-        this.collection = collection;
-        updateMaxUsedId();
-        //TODO MAKE INIT DATE UPDATING
+    public void setInitializationDate(LocalDate newDate) {
+        this.initializationDate = newDate;
     }
 
     public void initializeSorting() {
@@ -119,7 +117,6 @@ public class LabCollection {
             sb.append("\nNothing is here yet!\n");
         }
         sb.append(stopLine);
-        sb.append("\n");
         return sb.toString();
     }
 }

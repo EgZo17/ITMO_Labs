@@ -20,6 +20,6 @@ public class Add implements Command {
         }
         LabWork newLabWork = ElementInputManager.readElement(scanner);
         labCollection.addElement(newLabWork);
-        System.out.println("\nNew item has been added successfully.\n");
+        System.out.println("\nNew item has been added successfully.");
     }
 }

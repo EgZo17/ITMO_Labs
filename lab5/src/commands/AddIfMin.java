@@ -22,9 +22,9 @@ public class AddIfMin implements Command {
         LabWork minLabWork = labCollection.getMinElement();
         if (newLabWork.compareTo(minLabWork) < 0) {
             labCollection.addElement(newLabWork);
-            System.out.println("\nNew item has been added successfully.\n");
+            System.out.println("\nNew item has been added successfully.");
             return;
         }
-        System.out.println("\nNew item has not been added: not less than minimal.\n");
+        System.out.println("\nNew item has not been added: not less than minimal.");
     }
 }
