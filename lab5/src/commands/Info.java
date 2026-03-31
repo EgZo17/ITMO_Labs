@@ -1,14 +1,21 @@
 package commands;
 
+import collection.LabCollection;
+import data.LabWork;
 import utils.Command;
 
 public class Info implements Command {
-    public Info() {
+    private LabCollection labCollection = LabCollection.getInstance();
 
-    }
+    public Info() {}
 
     @Override
-    public void execute(String[] args) {
-
+    public void execute(String[] parameters) {
+        if (!validate(parameters)) {
+            return;
+        }
+        System.out.printf("Collection type: %s%nStored data type: %s%nCollection size: %d%nCreation date: %s%n",
+                labCollection.getCollection().getClass().getName(), LabWork.class,
+                labCollection.getLength(), labCollection.getInitializationDate());
     }
 }

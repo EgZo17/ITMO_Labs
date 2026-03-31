@@ -6,16 +6,16 @@ import utils.Command;
 import enums.Difficulty;
 
 public class FilterByDifficulty implements Command {
-    private LabCollection labCollection;
+    private LabCollection labCollection = LabCollection.getInstance();
     private String difficultyName;
 
-    public FilterByDifficulty(LabCollection labCollection, String difficultyName) {
-        this.labCollection = labCollection;
-        this.difficultyName = difficultyName;
-    }
+    public FilterByDifficulty() {}
 
     @Override
-    public void execute() {
+    public void execute(String[] parameters) {
+        if (!validate(parameters)) {
+            return;
+        }
         Difficulty difficulty;
         try {
             difficulty = Difficulty.valueOf(difficultyName);
@@ -28,6 +28,9 @@ public class FilterByDifficulty implements Command {
         boolean labFound = false;
         sb.append(stopLine);
         for (LabWork labWork : labCollection.getCollection()) {
+            if (labWork.getDifficulty() == null) {
+                continue;
+            }
             if (labWork.getDifficulty().equals(difficulty)) {
                 sb.append(labWork);
                 labFound = true;
@@ -39,5 +42,20 @@ public class FilterByDifficulty implements Command {
         sb.append(stopLine);
         sb.append("\n");
         System.out.println(sb.toString());
+    }
+
+    @Override
+    public boolean validate(String[] parameters) {
+        if (parameters.length != 1) {
+            System.out.println("Error: Invalid command signature. Enter \"help\" to see more.");
+            return false;
+        }
+        try {
+            this.difficultyName = (String) parameters[0];
+        } catch (Exception e) {
+            System.out.println("Error: Invalid command signature. Enter \"help\" to see more.");
+            return false;
+        }
+        return true;
     }
 }

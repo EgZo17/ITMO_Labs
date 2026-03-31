@@ -6,11 +6,12 @@ import java.util.LinkedList;
 import data.LabWork;
 
 public class LabCollection {
+    private static final LabCollection INSTANCE = new LabCollection();
     private int maxUsedId = 0;
     private LocalDate initializationDate = LocalDate.now(); //TODO COMPLETE
     private LinkedList<LabWork> collection = new LinkedList<LabWork>();
 
-    public LabCollection() {}
+    private LabCollection() {}
 
     private void updateMaxUsedId() {
         maxUsedId = 0;
@@ -19,6 +20,10 @@ public class LabCollection {
                 maxUsedId = collection.get(i).getId();
             }
         }
+    }
+
+    public static LabCollection getInstance() {
+        return INSTANCE;
     }
 
     public LinkedList<LabWork> getCollection() {

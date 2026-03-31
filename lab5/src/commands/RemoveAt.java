@@ -4,16 +4,16 @@ import utils.Command;
 import collection.LabCollection;
 
 public class RemoveAt implements Command {
-    private LabCollection labCollection;
+    private LabCollection labCollection = LabCollection.getInstance();
     private int index;
 
-    public RemoveAt(LabCollection labCollection, int index) {
-        this.labCollection = labCollection;
-        this.index = index;
-    }
+    public RemoveAt() {}
 
     @Override
-    public void execute() {
+    public void execute(String[] parameters) {
+        if (!validate(parameters)) {
+            return;
+        }
         if (index < 0) {
             System.out.println("Index must be a non-negative number, try again.\n");
             return;
@@ -23,5 +23,20 @@ public class RemoveAt implements Command {
             return;
         }
         System.out.println("Item has been deleted successfully.\n");
+    }
+
+    @Override
+    public boolean validate(String[] parameters) {
+        if (parameters.length != 1) {
+            System.out.println("Error: Invalid command signature. Enter \"help\" to see more.");
+            return false;
+        }
+        try {
+            this.index = Integer.parseInt((String) parameters[0]);
+        } catch (Exception e) {
+            System.out.println("Error: Invalid command signature. Enter \"help\" to see more.");
+            return false;
+        }
+        return true;
     }
 }

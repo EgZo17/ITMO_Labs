@@ -2,6 +2,7 @@ import utils.Client;
 
 public class App {
     public static void main(String[] args) {
-        Client.run();
+        Client client = new Client();
+        client.run();
     }
 }

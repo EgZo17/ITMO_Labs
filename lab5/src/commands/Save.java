@@ -8,7 +8,9 @@ public class Save implements Command {
     }
 
     @Override
-    public void execute(String[] args) {
-
+    public void execute(String[] parameters) {
+        if (!validate(parameters)) {
+            return;
+        }
     }
 }

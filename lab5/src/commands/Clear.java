@@ -4,14 +4,15 @@ import utils.Command;
 import collection.LabCollection;
 
 public class Clear implements Command {
-    private LabCollection labCollection;
+    private LabCollection labCollection = LabCollection.getInstance();
 
-    public Clear(LabCollection labCollection) {
-        this.labCollection = labCollection;
-    }
+    public Clear() {}
 
     @Override
-    public void execute() {
+    public void execute(String[] parameters) {
+        if (!validate(parameters)) {
+            return;
+        }
         labCollection.clear();
         System.out.println("Collection is cleared.\n");
     }

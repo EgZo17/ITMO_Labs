@@ -8,14 +8,15 @@ import data.LabWork;
 import data.Person;
 
 public class PrintFieldDescendingAuthor implements Command {
-    private LabCollection labCollection;
+    private LabCollection labCollection = LabCollection.getInstance();
 
-    public PrintFieldDescendingAuthor(LabCollection labCollection) {
-        this.labCollection = labCollection;
-    }
+    public PrintFieldDescendingAuthor() {}
 
     @Override
-    public void execute() {
+    public void execute(String[] parameters) {
+        if (!validate(parameters)) {
+            return;
+        }
         ArrayList<Person> authors = new ArrayList<>();
         for (LabWork labWork : labCollection.getCollection()) {
             authors.add(labWork.getAuthor());

@@ -2,22 +2,23 @@ package commands;
 
 import utils.Command;
 import utils.ElementInputManager;
+import utils.GlobalScanner;
 import java.util.Scanner;
 import collection.LabCollection;
 import data.LabWork;
 
 public class AddIfMin implements Command {
-    private LabCollection labCollection;
-    private Scanner scanner;
+    private LabCollection labCollection = LabCollection.getInstance();
+    private Scanner scanner = GlobalScanner.getScanner();
 
-    public AddIfMin(LabCollection labCollection, Scanner scanner) {
-        this.labCollection = labCollection;
-        this.scanner = scanner;
-    }
+    public AddIfMin() {}
 
     @Override
-    public void execute() {
-        LabWork newLabWork = ElementInputManager.readElement(scanner, labCollection);
+    public void execute(String[] parameters) {
+        if (!validate(parameters)) {
+            return;
+        }
+        LabWork newLabWork = ElementInputManager.readElement(scanner);
         LabWork minLabWork = labCollection.getMinElement();
         if (newLabWork.compareTo(minLabWork) < 0) {
             labCollection.addElement(newLabWork);

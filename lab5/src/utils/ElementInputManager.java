@@ -7,7 +7,7 @@ import data.*;
 import enums.*;
 
 public class ElementInputManager {
-    public static LabWork readElement(Scanner reader, LabCollection labCollection) {
+    public static LabWork readElement(Scanner scanner) {
         int id;
         String name;
         double coordX;
@@ -23,22 +23,24 @@ public class ElementInputManager {
         double locationY;
         Double locationZ;
 
+        LabCollection labCollection = LabCollection.getInstance();
+
         id = labCollection.getNextId();
         name = readString("Please, enter this laboratory work's name: ",
                 input -> !input.trim().isEmpty(),
-                "Name can not be null nor empty, try again.", false, reader);
+                "Name can not be null nor empty, try again.", false, scanner);
         coordX = readDouble("Please, enter the X coordinate of this laboratory work (double): ",
                 value -> true,
-                "---ERROR---", reader);
+                "---ERROR---", scanner);
         coordY = readInt("Please, enter the Y coordinate of this laboratory work (int): ", 
                 value -> true,
-                "---ERROR---", reader);
+                "---ERROR---", scanner);
         minimalPoint = readFloat("Please, enter the minimal point this laboratory work to get (float): ", 
                 value -> value > 0,
-                "Minimal point must be a positive number, try again.", reader);
+                "Minimal point must be a positive number, try again.", scanner);
         difficultyName = readString("Please, enter difficulty of this laboratory work [HARD, HOPELESS, TERRIBLE] (skipable): ", 
                 input -> Arrays.asList("HARD", "HOPELESS", "TERRIBLE").contains(input),
-                "Difficulty level you entered is not in the list, try again.", true, reader);
+                "Difficulty level you entered is not in the list, try again.", true, scanner);
         if (!(difficultyName == null)) {
             difficulty = Difficulty.valueOf(difficultyName);
         }
@@ -47,22 +49,22 @@ public class ElementInputManager {
         }
         authorName = readString("Please, enter the name of author of this laboratory work: ",
                 input -> !input.trim().isEmpty(),
-                "Name can not be null nor empty, try again.", false, reader);
+                "Name can not be null nor empty, try again.", false, scanner);
         authorHeight = readDouble("Please, enter the height of laboratory work's author (double): ", 
-                value -> value > 0, "Height must be a positive number, try again.", reader);
+                value -> value > 0, "Height must be a positive number, try again.", scanner);
         authorEyeColorName = readString("Please, enter the color of eyes of this laboratory work's author [RED, BLACK, ORANGE]: ", 
                 input -> Arrays.asList("RED", "BLACK", "ORANGE").contains(input),
-                "The color of eyes you entered is not in the list, try again.", false, reader);
+                "The color of eyes you entered is not in the list, try again.", false, scanner);
         authorEyeColor = Color.valueOf(authorEyeColorName);
         locationX = readInt("Please, enter the X coordinate of author's location (int): ", 
                 value -> true,
-                "---ERROR---", reader);
+                "---ERROR---", scanner);
         locationY = readDouble("Please, enter the Y coordinate of author's location (double): ", 
                 value -> true,
-                "---ERROR---", reader);
+                "---ERROR---", scanner);
         locationZ = readDouble("Please, enter the Z coordinate of author's location (double): ", 
                 value -> true,
-                "---ERROR---", reader);
+                "---ERROR---", scanner);
         
         Coordinates coordinates = new Coordinates(coordX, coordY);
         Location location = new Location(locationX, locationY, locationZ);
