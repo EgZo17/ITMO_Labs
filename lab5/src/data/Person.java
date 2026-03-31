@@ -1,8 +1,8 @@
-package data;
+package com.labwork.data;
 
 import java.util.Comparator;
 import java.util.Objects;
-import enums.Color;
+import com.labwork.enums.Color;
 
 public class Person implements Comparable<Person> {
     private String name; //Поле не может быть null, Строка не может быть пустой

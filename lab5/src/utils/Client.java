@@ -1,8 +1,8 @@
-package utils;
+package com.labwork.utils;
 
 import java.util.Arrays;
 import java.util.Scanner;
-import commands.*;
+import com.labwork.commands.*;
 
 public class Client {
     private Invoker invoker;

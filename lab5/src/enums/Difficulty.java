@@ -1,4 +1,4 @@
-package enums;
+package com.labwork.enums;
 
 public enum Difficulty {
     HARD,

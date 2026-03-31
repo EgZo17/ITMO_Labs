@@ -1,11 +1,11 @@
-package commands;
+package com.labwork.commands;
 
-import utils.Command;
-import utils.ElementInputManager;
-import utils.GlobalScanner;
+import com.labwork.utils.Command;
+import com.labwork.utils.ElementInputManager;
+import com.labwork.utils.GlobalScanner;
 import java.util.Scanner;
-import collection.LabCollection;
-import data.LabWork;
+import com.labwork.collection.LabCollection;
+import com.labwork.data.LabWork;
 
 public class Update implements Command {
     private int id;
@@ -21,7 +21,7 @@ public class Update implements Command {
         }
         LabWork targetLabWork = labCollection.getElementById(id);
         if (targetLabWork == null) {
-            System.out.println("Item with such ID does not exist, try again.\n");
+            System.out.println("Item with such ID does not exist, try again.");
             return;
         }
         LabWork newLabWork = ElementInputManager.readElement(scanner);

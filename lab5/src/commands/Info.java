@@ -1,8 +1,8 @@
-package commands;
+package com.labwork.commands;
 
-import collection.LabCollection;
-import data.LabWork;
-import utils.Command;
+import com.labwork.collection.LabCollection;
+import com.labwork.data.LabWork;
+import com.labwork.utils.Command;
 
 public class Info implements Command {
     private LabCollection labCollection = LabCollection.getInstance();

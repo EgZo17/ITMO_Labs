@@ -1,8 +1,8 @@
-package commands;
+package com.labwork.commands;
 
-import utils.Command;
-import collection.LabCollection;
-import data.LabWork;
+import com.labwork.utils.Command;
+import com.labwork.collection.LabCollection;
+import com.labwork.data.LabWork;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -25,12 +25,12 @@ public class RemoveAnyByAuthor implements Command {
             }
         }
         if (authorWorks.isEmpty()) {
-            System.out.println("This author has never been mentioned, try again.\n");
+            System.out.println("This author has never been mentioned, try again.");
             return;
         }
         LabWork pickedLabWork = authorWorks.get(rand.nextInt(authorWorks.size()));
         labCollection.delElementById(pickedLabWork.getId());
-        System.out.println("Item has been deleted successfully.\n");
+        System.out.println("Item has been deleted successfully.");
     }
 
     @Override

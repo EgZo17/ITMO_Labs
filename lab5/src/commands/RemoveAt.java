@@ -1,7 +1,7 @@
-package commands;
+package com.labwork.commands;
 
-import utils.Command;
-import collection.LabCollection;
+import com.labwork.utils.Command;
+import com.labwork.collection.LabCollection;
 
 public class RemoveAt implements Command {
     private LabCollection labCollection = LabCollection.getInstance();
@@ -15,14 +15,14 @@ public class RemoveAt implements Command {
             return;
         }
         if (index < 0) {
-            System.out.println("Index must be a non-negative number, try again.\n");
+            System.out.println("Index must be a non-negative number, try again.");
             return;
         }
         if (!labCollection.delElementByIndex(index)) {
-            System.out.println("This index is out of range, try again.\n");
+            System.out.println("This index is out of range, try again.");
             return;
         }
-        System.out.println("Item has been deleted successfully.\n");
+        System.out.println("Item has been deleted successfully.");
     }
 
     @Override

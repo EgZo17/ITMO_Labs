@@ -1,7 +1,7 @@
-package commands;
+package com.labwork.commands;
 
-import utils.Command;
-import collection.LabCollection;
+import com.labwork.utils.Command;
+import com.labwork.collection.LabCollection;
 
 public class RemoveById implements Command {
     private LabCollection labCollection = LabCollection.getInstance();
@@ -15,14 +15,14 @@ public class RemoveById implements Command {
             return;
         }
         if (id <= 0) {
-            System.out.println("ID must be a positive number, try again.\n");
+            System.out.println("ID must be a positive number, try again.");
             return;
         }
         if (!labCollection.delElementById(id)) {
-            System.out.println("Item with this ID does not exist, try again.\n");
+            System.out.println("Item with this ID does not exist, try again.");
             return;
         }
-        System.out.println("Item has been deleted successfully.\n");
+        System.out.println("Item has been deleted successfully.");
     }
 
     @Override

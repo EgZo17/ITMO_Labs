@@ -1,7 +1,7 @@
-package commands;
+package com.labwork.commands;
 
-import utils.Command;
-import collection.LabCollection;
+import com.labwork.utils.Command;
+import com.labwork.collection.LabCollection;
 
 public class Clear implements Command {
     private LabCollection labCollection = LabCollection.getInstance();
@@ -14,6 +14,6 @@ public class Clear implements Command {
             return;
         }
         labCollection.clear();
-        System.out.println("Collection is cleared.\n");
+        System.out.println("Collection is cleared.");
     }
 }

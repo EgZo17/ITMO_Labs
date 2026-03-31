@@ -1,6 +1,6 @@
-package commands;
+package com.labwork.commands;
 
-import utils.Command;
+import com.labwork.utils.Command;
 
 public class Save implements Command {
     public Save() {

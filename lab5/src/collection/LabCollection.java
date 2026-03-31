@@ -1,9 +1,9 @@
-package collection;
+package com.labwork.collection;
 
 import java.time.LocalDate;
 import java.util.Collections;
 import java.util.LinkedList;
-import data.LabWork;
+import com.labwork.data.LabWork;
 
 public class LabCollection {
     private static final LabCollection INSTANCE = new LabCollection();

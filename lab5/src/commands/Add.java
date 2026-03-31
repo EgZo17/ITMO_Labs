@@ -1,11 +1,11 @@
-package commands;
+package com.labwork.commands;
 
-import utils.Command;
-import utils.ElementInputManager;
-import utils.GlobalScanner;
+import com.labwork.utils.Command;
+import com.labwork.utils.ElementInputManager;
+import com.labwork.utils.GlobalScanner;
 import java.util.Scanner;
-import collection.LabCollection;
-import data.LabWork;
+import com.labwork.collection.LabCollection;
+import com.labwork.data.LabWork;
 
 public class Add implements Command {
     private LabCollection labCollection = LabCollection.getInstance();

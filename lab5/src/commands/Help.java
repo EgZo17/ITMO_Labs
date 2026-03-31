@@ -1,7 +1,7 @@
-package commands;
+package com.labwork.commands;
 
-import utils.Command;
-import enums.CommandDescription;
+import com.labwork.utils.Command;
+import com.labwork.enums.CommandDescription;
 
 public class Help implements Command {
     public Help() {}

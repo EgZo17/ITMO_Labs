@@ -1,11 +1,11 @@
-package commands;
+package com.labwork.commands;
 
-import utils.Command;
+import com.labwork.utils.Command;
 import java.util.ArrayList;
 import java.util.Collections;
-import collection.LabCollection;
-import data.LabWork;
-import data.Person;
+import com.labwork.collection.LabCollection;
+import com.labwork.data.LabWork;
+import com.labwork.data.Person;
 
 public class PrintFieldDescendingAuthor implements Command {
     private LabCollection labCollection = LabCollection.getInstance();
@@ -34,7 +34,6 @@ public class PrintFieldDescendingAuthor implements Command {
             sb.append(author);
         }
         sb.append(stopLine);
-        sb.append("\n");
         System.out.println(sb.toString());
     }
 }

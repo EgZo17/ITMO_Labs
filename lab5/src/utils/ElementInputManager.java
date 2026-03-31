@@ -1,10 +1,10 @@
-package utils;
+package com.labwork.utils;
 
 import java.util.Arrays;
 import java.util.Scanner;
-import collection.LabCollection;
-import data.*;
-import enums.*;
+import com.labwork.collection.LabCollection;
+import com.labwork.data.*;
+import com.labwork.enums.*;
 
 public class ElementInputManager {
     public static LabWork readElement(Scanner scanner) {

@@ -1,4 +1,4 @@
-package data;
+package com.labwork.data;
 
 import java.util.Objects;
 

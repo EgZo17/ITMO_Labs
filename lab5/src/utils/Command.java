@@ -1,4 +1,4 @@
-package utils;
+package com.labwork.utils;
 
 public interface Command {
     void execute(String[] parameters);

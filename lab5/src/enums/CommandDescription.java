@@ -1,4 +1,4 @@
-package enums;
+package com.labwork.enums;
 
 public enum CommandDescription {
     HELP("", "Display the help for the available commands."),
