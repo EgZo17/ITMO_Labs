@@ -9,7 +9,6 @@ import com.labwork.data.LabWork;
 
 public class AddIfMin implements Command {
     private LabCollection labCollection = LabCollection.getInstance();
-    private Scanner scanner = GlobalScanner.getScanner();
 
     public AddIfMin() {}
 
@@ -18,6 +17,7 @@ public class AddIfMin implements Command {
         if (!validate(parameters)) {
             return;
         }
+        Scanner scanner = GlobalScanner.getScanner();
         LabWork newLabWork = ElementInputManager.readElement(scanner);
         LabWork minLabWork = labCollection.getMinElement();
         if (newLabWork.compareTo(minLabWork) < 0) {

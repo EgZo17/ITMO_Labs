@@ -10,7 +10,6 @@ import com.labwork.data.LabWork;
 
 public class RemoveLower implements Command {
     private LabCollection labCollection = LabCollection.getInstance();
-    private Scanner scanner = GlobalScanner.getScanner();
 
     public RemoveLower() {}
 
@@ -19,6 +18,7 @@ public class RemoveLower implements Command {
         if (!validate(parameters)) {
             return;
         }
+        Scanner scanner = GlobalScanner.getScanner();
         LabWork thresholdLabWork = ElementInputManager.readElement(scanner);
         ArrayList<LabWork> toDelete = new ArrayList<>();
         for (LabWork labWork : labCollection.getCollection()) {
@@ -29,6 +29,6 @@ public class RemoveLower implements Command {
         for (LabWork labWork : toDelete) {
             labCollection.delElement(labWork);
         }
-        System.out.println(String.format("\nItems have been deleted: %s\n", toDelete.size()));
+        System.out.println(String.format("\nItems have been deleted: %s", toDelete.size()));
     }
 }

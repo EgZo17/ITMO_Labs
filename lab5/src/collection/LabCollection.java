@@ -19,7 +19,7 @@ public class LabCollection {
 
     @XmlElement(name = "initializationDate")
     @XmlJavaTypeAdapter(LocalDateAdapter.class)
-    private LocalDate initializationDate = LocalDate.now(); //TODO COMPLETE
+    private LocalDate initializationDate = LocalDate.now();
 
     @XmlElementWrapper(name = "labWorks")
     @XmlElement(name = "labWork")

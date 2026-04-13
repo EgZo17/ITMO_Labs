@@ -25,13 +25,9 @@ public class ElementInputManager {
 
         LabCollection labCollection = LabCollection.getInstance();
 
-        System.out.println("=== IN readElement ===");
-        System.out.println("Scanner = " + scanner);
-        System.out.println("Scanner class = " + scanner.getClass());
-
         id = labCollection.getNextId();
         name = readString("Please, enter this laboratory work's name: ",
-                input -> !input.trim().isEmpty(),
+                input -> !(input.trim().isEmpty() || input.trim().startsWith("#") || input.trim().startsWith("//")),
                 "Name can not be null nor empty, try again.", false, scanner);
         coordX = readDouble("Please, enter the X coordinate of this laboratory work (double): ",
                 value -> true,
@@ -52,7 +48,7 @@ public class ElementInputManager {
             difficulty = null;
         }
         authorName = readString("Please, enter the name of author of this laboratory work: ",
-                input -> !input.trim().isEmpty(),
+                input -> !(input.trim().isEmpty() || input.trim().startsWith("#") || input.trim().startsWith("//")),
                 "Name can not be null nor empty, try again.", false, scanner);
         authorHeight = readDouble("Please, enter the height of laboratory work's author (double): ", 
                 value -> value > 0, "Height must be a positive number, try again.", scanner);
@@ -81,7 +77,7 @@ public class ElementInputManager {
         while (true) {
             System.out.print(prompt);
             String input = reader.nextLine().trim();
-            if (input == null || input.trim().isEmpty()) {
+            if (input == null || input.isEmpty()) {
                 if (allowNull == true) {
                     return null;
                 }

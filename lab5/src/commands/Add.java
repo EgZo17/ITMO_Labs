@@ -9,7 +9,6 @@ import com.labwork.data.LabWork;
 
 public class Add implements Command {
     private LabCollection labCollection = LabCollection.getInstance();
-    private Scanner scanner = GlobalScanner.getScanner();
 
     public Add() {}
 
@@ -18,6 +17,7 @@ public class Add implements Command {
         if (!validate(parameters)) {
             return;
         }
+        Scanner scanner = GlobalScanner.getScanner();
         LabWork newLabWork = ElementInputManager.readElement(scanner);
         labCollection.addElement(newLabWork);
         System.out.println("\nNew item has been added successfully.");

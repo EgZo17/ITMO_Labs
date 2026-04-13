@@ -11,7 +11,6 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
-
 import com.labwork.utils.Command;
 import com.labwork.utils.GlobalScanner;
 import com.labwork.utils.Invoker;
@@ -29,10 +28,6 @@ public class ExecuteScript implements Command {
             return;
         }
 
-        System.out.println("=== BEFORE ===");
-        System.out.println("GlobalScanner.get() = " + GlobalScanner.getScanner());
-        System.out.println("GlobalScanner.get().getClass() = " + GlobalScanner.getScanner().getClass());
-
         String absPath = new File(filename).getAbsolutePath();
         
         // Проверка на рекурсию
@@ -43,16 +38,13 @@ public class ExecuteScript implements Command {
         
         executingScripts.add(absPath);
 
-        // Сохраняем оригинальный Scanner
         Scanner originalScanner = GlobalScanner.getScanner();
         
         try (BufferedReader bufferedReader = new BufferedReader(
                 new InputStreamReader(new FileInputStream(filename), StandardCharsets.UTF_8))) {
 
-            // Создаём новый Scanner из BufferedReader
             Scanner scriptScanner = new Scanner(bufferedReader);
             
-            // Подменяем глобальный Scanner
             GlobalScanner.setScanner(scriptScanner);
             
             String line;
@@ -61,7 +53,7 @@ public class ExecuteScript implements Command {
             while (scriptScanner.hasNextLine()) {
                 line = scriptScanner.nextLine().trim();
 
-                if (line.trim().isEmpty() || line.trim().startsWith("#")) {
+                if (line.isEmpty() || line.startsWith("#") || line.startsWith("//")) {
                     continue;
                 }
                 
@@ -77,16 +69,14 @@ public class ExecuteScript implements Command {
                     args = Arrays.copyOfRange(parts, 1, parts.length);
                 }
                 
-                boolean success = invoker.executeCommand(commandName, args);
-                
-                if (!success) {
-                    System.out.println("Command execution error at line " + lineNumber + ". Script terminated.");
-                    break;
-                }
+                invoker.executeCommand(commandName, args);
             }
             
             if (lineNumber > 0) {
-                System.out.println("Script executed successfully");
+                System.out.println("Script executed successfully.");
+            }
+            else {
+                System.out.println("Script is empty.");
             }
             
         } catch (FileNotFoundException e) {

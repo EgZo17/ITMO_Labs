@@ -10,7 +10,6 @@ import com.labwork.data.LabWork;
 public class Update implements Command {
     private int id;
     private LabCollection labCollection = LabCollection.getInstance();
-    private Scanner scanner = GlobalScanner.getScanner();
 
     public Update() {}
 
@@ -24,6 +23,7 @@ public class Update implements Command {
             System.out.println("Item with such ID does not exist, try again.");
             return;
         }
+        Scanner scanner = GlobalScanner.getScanner();
         LabWork newLabWork = ElementInputManager.readElement(scanner);
         targetLabWork.setName(newLabWork.getName());
         targetLabWork.setCoordinates(newLabWork.getCoordinates());
@@ -31,7 +31,7 @@ public class Update implements Command {
         targetLabWork.setDifficulty(newLabWork.getDifficulty());
         targetLabWork.setAuthor(newLabWork.getAuthor());
         labCollection.initializeSorting();
-        System.out.println(String.format("\nItem with ID %s has been updated successfully.\n", id));
+        System.out.println(String.format("\nItem with ID %s has been updated successfully.", id));
     }
 
     @Override

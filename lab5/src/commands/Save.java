@@ -16,10 +16,8 @@ public class Save implements Command {
         try {
             FileManager.saveCollection();
         } catch (JAXBException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
