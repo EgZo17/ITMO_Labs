@@ -1,15 +1,24 @@
 package com.labwork.data;
 
 import java.util.Objects;
+import javax.xml.bind.annotation.*;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Coordinates {
+
+    @XmlElement(required = true)
     private double x;
+
+    @XmlElement(required = true)
     private int y;
 
     public Coordinates(double x, int y) {
         this.x = x;
         this.y = y;
     }
+
+    // Конструктор без параметров для JAXB
+    public Coordinates() {}
 
     public double getX() {
         return x;

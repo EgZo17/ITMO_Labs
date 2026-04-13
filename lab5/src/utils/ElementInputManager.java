@@ -25,6 +25,10 @@ public class ElementInputManager {
 
         LabCollection labCollection = LabCollection.getInstance();
 
+        System.out.println("=== IN readElement ===");
+        System.out.println("Scanner = " + scanner);
+        System.out.println("Scanner class = " + scanner.getClass());
+
         id = labCollection.getNextId();
         name = readString("Please, enter this laboratory work's name: ",
                 input -> !input.trim().isEmpty(),

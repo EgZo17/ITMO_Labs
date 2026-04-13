@@ -4,14 +4,34 @@ import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.Objects;
 import com.labwork.enums.Difficulty;
+import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import com.labwork.xml.LocalDateAdapter;
 
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(propOrder = {"id", "name", "coordinates", "creationDate", "minimalPoint", "difficulty", "author"})
 public class LabWork implements Comparable<LabWork> {
-    private final int id; //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
+
+    @XmlElement(required = true)
+    private int id; //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
+
+    @XmlElement(required = true)
     private String name; //Поле не может быть null, Строка не может быть пустой
+
+    @XmlElement(required = true)
     private Coordinates coordinates; //Поле не может быть null
-    private final LocalDate creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
+
+    @XmlElement(name = "creationDate", required = true)
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
+    private LocalDate creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
+
+    @XmlElement(required = true)
     private Float minimalPoint; //Поле не может быть null, Значение поля должно быть больше 0
+
+    @XmlElement
     private Difficulty difficulty; //Поле может быть null
+
+    @XmlElement(required = true)
     private Person author; //Поле не может быть null
 
     public LabWork(int id, String name, Coordinates coordinates, Float minimalPoint, Difficulty difficulty, Person author) {
@@ -24,6 +44,13 @@ public class LabWork implements Comparable<LabWork> {
         setAuthor(author);
     }
 
+    // Конструктор без параметров для JAXB
+    public LabWork() {}
+
+    // Сеттеры для JAXB (package-private, чтобы нельзя было вызвать извне)
+    void setId(int id) { this.id = id; }
+    void setCreationDate(LocalDate creationDate) { this.creationDate = creationDate; }
+    
     public int getId() {
         return id;
     }

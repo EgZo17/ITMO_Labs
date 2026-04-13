@@ -6,8 +6,16 @@ import java.util.Map;
 public class Invoker {
     private Map<String, Command> commands = new HashMap<>();
     private boolean isRunning = true;
+    private static Invoker INVOKER;
 
-    public Invoker() {}
+    private Invoker() {}
+
+    public static Invoker getInvoker() {
+        if (INVOKER == null) {
+            INVOKER = new Invoker();
+        }
+        return INVOKER;
+    }
 
     public void registerCommand(String name, Command command) {
         commands.put(name, command);

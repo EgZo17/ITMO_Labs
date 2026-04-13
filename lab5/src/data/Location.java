@@ -1,10 +1,18 @@
 package com.labwork.data;
 
 import java.util.Objects;
+import javax.xml.bind.annotation.*;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Location {
+
+    @XmlElement(required = true)
     private Integer x; //Поле не может быть null
+
+    @XmlElement(required = true)
     private double y;
+
+    @XmlElement(required = true)
     private Double z; //Поле не может быть null
 
     public Location(Integer x, double y, Double z) {
@@ -12,6 +20,9 @@ public class Location {
         setY(y);
         setZ(z);
     }
+
+    // Конструктор без параметров для JAXB
+    public Location() {}
 
     public Integer getX() {
         return x;

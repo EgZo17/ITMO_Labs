@@ -3,11 +3,21 @@ package com.labwork.data;
 import java.util.Comparator;
 import java.util.Objects;
 import com.labwork.enums.Color;
+import javax.xml.bind.annotation.*;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Person implements Comparable<Person> {
+
+    @XmlElement(required = true)
     private String name; //Поле не может быть null, Строка не может быть пустой
+
+    @XmlElement(required = true)
     private Double height; //Поле не может быть null, Значение поля должно быть больше 0
+
+    @XmlElement(required = true)
     private Color eyeColor; //Поле не может быть null
+
+    @XmlElement(required = true)
     private Location location; //Поле не может быть null
 
     public Person(String name, Double height, Color eyeColor, Location location) {
@@ -16,6 +26,9 @@ public class Person implements Comparable<Person> {
         setEyeColor(eyeColor);
         setLocation(location);
     }
+
+    // Конструктор без параметров для JAXB
+    public Person() {}
 
     public String getName() {
         return name;

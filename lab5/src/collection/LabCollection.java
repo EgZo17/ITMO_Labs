@@ -4,11 +4,25 @@ import java.time.LocalDate;
 import java.util.Collections;
 import java.util.LinkedList;
 import com.labwork.data.LabWork;
+import com.labwork.xml.LocalDateAdapter;
+import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+@XmlRootElement(name = "labCollection")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class LabCollection {
+
     private static final LabCollection INSTANCE = new LabCollection();
+
+    @XmlTransient
     private int maxUsedId = 0;
+
+    @XmlElement(name = "initializationDate")
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
     private LocalDate initializationDate = LocalDate.now(); //TODO COMPLETE
+
+    @XmlElementWrapper(name = "labWorks")
+    @XmlElement(name = "labWork")
     private LinkedList<LabWork> collection = new LinkedList<LabWork>();
 
     private LabCollection() {}
@@ -20,6 +34,12 @@ public class LabCollection {
                 maxUsedId = collection.get(i).getId();
             }
         }
+    }
+
+    // Специальный сеттер для JAXB
+    public void setCollection(LinkedList<LabWork> collection) {
+        this.collection = collection;
+        updateMaxUsedId();
     }
 
     public static LabCollection getInstance() {

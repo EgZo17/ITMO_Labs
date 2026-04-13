@@ -1,20 +1,26 @@
 package com.labwork.utils;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
+
+import javax.xml.bind.JAXBException;
+
 import com.labwork.commands.*;
 
 public class Client {
     private Invoker invoker;
     private Scanner scanner;
 
-    public void run() {
-        this.invoker = new Invoker();
+    public void run() throws JAXBException, IOException {
+        this.invoker = Invoker.getInvoker();
         this.scanner = GlobalScanner.getScanner();
 
         initializeCommands();
+        FileManager.initialize();
+        FileManager.loadCollection();
 
-        System.out.println("=== LabWork Collection Manager ===");
+        System.out.println("\n=== LabWork Collection Manager ===");
         System.out.println("Type 'help' for available commands.");
         
         while (invoker.isRunning()) {

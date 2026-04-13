@@ -1,16 +1,101 @@
 package com.labwork.commands;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Set;
+
 import com.labwork.utils.Command;
+import com.labwork.utils.GlobalScanner;
+import com.labwork.utils.Invoker;
 
 public class ExecuteScript implements Command {
-    public ExecuteScript() {
+    private final Invoker invoker = Invoker.getInvoker();
+    private String filename;
+    private Set<String> executingScripts = new HashSet<>();
 
-    }
+    public ExecuteScript() {}
 
     @Override
     public void execute(String[] parameters) {
         if (!validate(parameters)) {
             return;
+        }
+
+        System.out.println("=== BEFORE ===");
+        System.out.println("GlobalScanner.get() = " + GlobalScanner.getScanner());
+        System.out.println("GlobalScanner.get().getClass() = " + GlobalScanner.getScanner().getClass());
+
+        String absPath = new File(filename).getAbsolutePath();
+        
+        // Проверка на рекурсию
+        if (executingScripts.contains(absPath)) {
+            System.out.println("Error: Recursive script call");
+            return;
+        }
+        
+        executingScripts.add(absPath);
+
+        // Сохраняем оригинальный Scanner
+        Scanner originalScanner = GlobalScanner.getScanner();
+        
+        try (BufferedReader bufferedReader = new BufferedReader(
+                new InputStreamReader(new FileInputStream(filename), StandardCharsets.UTF_8))) {
+
+            // Создаём новый Scanner из BufferedReader
+            Scanner scriptScanner = new Scanner(bufferedReader);
+            
+            // Подменяем глобальный Scanner
+            GlobalScanner.setScanner(scriptScanner);
+            
+            String line;
+            int lineNumber = 0;
+            
+            while (scriptScanner.hasNextLine()) {
+                line = scriptScanner.nextLine().trim();
+
+                if (line.trim().isEmpty() || line.trim().startsWith("#")) {
+                    continue;
+                }
+                
+                lineNumber++;
+                System.out.println("[" + lineNumber + "] > " + line);
+
+                String[] parts = line.split("\\s+");
+                String[] args;
+                String commandName = parts[0].toLowerCase();
+                if (parts.length == 1) {
+                    args = new String[0];
+                } else {
+                    args = Arrays.copyOfRange(parts, 1, parts.length);
+                }
+                
+                boolean success = invoker.executeCommand(commandName, args);
+                
+                if (!success) {
+                    System.out.println("Command execution error at line " + lineNumber + ". Script terminated.");
+                    break;
+                }
+            }
+            
+            if (lineNumber > 0) {
+                System.out.println("Script executed successfully");
+            }
+            
+        } catch (FileNotFoundException e) {
+            System.out.println("Error: script file not found: " + filename);
+        } catch (IOException e) {
+            System.out.println("Input-output exception: " + e.getMessage());
+        } finally {
+            GlobalScanner.setScanner(originalScanner);
+            executingScripts.remove(absPath);
         }
     }
 
@@ -21,7 +106,7 @@ public class ExecuteScript implements Command {
             return false;
         }
         try {
-            // TODO
+            this.filename = (String) parameters[0];
         } catch (Exception e) {
             System.out.println("Error: Invalid command signature. Enter \"help\" to see more.");
             return false;
