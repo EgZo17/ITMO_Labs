@@ -8,6 +8,12 @@ import com.labwork.xml.LocalDateAdapter;
 import javax.xml.bind.annotation.*;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+/**
+ * Синглтон-класс, управляющий коллекцией лабораторных работ.
+ * Обеспечивает хранение, добавление, удаление и поиск элементов.
+ * Поддерживает XML-сериализацию для сохранения и загрузки коллекции.
+ */
+
 @XmlRootElement(name = "labCollection")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class LabCollection {

@@ -3,6 +3,10 @@ package com.labwork.commands;
 import com.labwork.utils.Command;
 import com.labwork.enums.CommandDescription;
 
+/**
+ * Команда для вывода справки по всем доступным командам.
+ */
+
 public class Help implements Command {
     public Help() {}
 

@@ -5,6 +5,10 @@ import com.labwork.data.LabWork;
 import com.labwork.utils.Command;
 import com.labwork.enums.Difficulty;
 
+/**
+ * Команда для вывода элементов с заданным уровнем сложности.
+ */
+
 public class FilterByDifficulty implements Command {
     private LabCollection labCollection = LabCollection.getInstance();
     private String difficultyName;

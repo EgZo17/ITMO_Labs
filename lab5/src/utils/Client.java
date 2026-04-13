@@ -3,10 +3,13 @@ package com.labwork.utils;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
-
 import javax.xml.bind.JAXBException;
-
 import com.labwork.commands.*;
+
+/**
+ * Класс клиента, запускаемый главным классом приложения.
+ * Инициализирует коллекцию, загружает данные из файла, запускает интерактивный режим.
+ */
 
 public class Client {
     private Invoker invoker;

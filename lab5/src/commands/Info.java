@@ -4,6 +4,10 @@ import com.labwork.collection.LabCollection;
 import com.labwork.data.LabWork;
 import com.labwork.utils.Command;
 
+/**
+ * Команда для вывода информации о коллекции: тип, дата инициализации, количество элементов.
+ */
+
 public class Info implements Command {
     private LabCollection labCollection = LabCollection.getInstance();
 

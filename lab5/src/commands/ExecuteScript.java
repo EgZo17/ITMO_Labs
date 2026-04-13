@@ -15,6 +15,11 @@ import com.labwork.utils.Command;
 import com.labwork.utils.GlobalScanner;
 import com.labwork.utils.Invoker;
 
+/**
+ * Команда для выполнения скрипта из файла. Содержит команды в том же виде, что и при интерактивном вводе.
+ * Защищена от рекурсии.
+ */
+
 public class ExecuteScript implements Command {
     private final Invoker invoker = Invoker.getInvoker();
     private String filename;
@@ -30,7 +35,6 @@ public class ExecuteScript implements Command {
 
         String absPath = new File(filename).getAbsolutePath();
         
-        // Проверка на рекурсию
         if (executingScripts.contains(absPath)) {
             System.out.println("Error: Recursive script call");
             return;

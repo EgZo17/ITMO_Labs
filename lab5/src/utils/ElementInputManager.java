@@ -6,6 +6,11 @@ import com.labwork.collection.LabCollection;
 import com.labwork.data.*;
 import com.labwork.enums.*;
 
+/**
+ * Утилитарный класс для интерактивного ввода данных лабораторной работы.
+ * Предоставляет методы для чтения различных типов данных с валидацией.
+ */
+
 public class ElementInputManager {
     public static LabWork readElement(Scanner scanner) {
         int id;

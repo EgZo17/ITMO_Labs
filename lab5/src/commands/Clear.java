@@ -3,6 +3,10 @@ package com.labwork.commands;
 import com.labwork.utils.Command;
 import com.labwork.collection.LabCollection;
 
+/**
+ * Команда для очистки всей коллекции.
+ */
+
 public class Clear implements Command {
     private LabCollection labCollection = LabCollection.getInstance();
 

@@ -2,6 +2,10 @@ package com.labwork.commands;
 
 import com.labwork.utils.Command;
 
+/**
+ * Команда для завершения работы программы без сохранения коллекции.
+ */
+
 public class Exit implements Command {
     public Exit() {}
 

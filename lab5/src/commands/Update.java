@@ -7,6 +7,11 @@ import java.util.Scanner;
 import com.labwork.collection.LabCollection;
 import com.labwork.data.LabWork;
 
+/**
+ * Команда для обновления элемента коллекции по его ID.
+ * Запрашивает у пользователя все необходимые данные через ElementInputManager.
+ */
+
 public class Update implements Command {
     private int id;
     private LabCollection labCollection = LabCollection.getInstance();

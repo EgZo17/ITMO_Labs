@@ -3,6 +3,10 @@ package com.labwork.data;
 import java.util.Objects;
 import javax.xml.bind.annotation.*;
 
+/**
+ * Класс, представляющий координаты (X, Y) для лабораторной работы.
+ */
+
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Coordinates {
 

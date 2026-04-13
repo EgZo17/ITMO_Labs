@@ -6,6 +6,10 @@ import com.labwork.data.LabWork;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * Команда для удаления одного случайного элемента по имени автора.
+ */
+
 public class RemoveAnyByAuthor implements Command {
     private LabCollection labCollection = LabCollection.getInstance();
     private String authorName;

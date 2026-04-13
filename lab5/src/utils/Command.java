@@ -1,5 +1,9 @@
 package com.labwork.utils;
 
+/**
+ * Интерфейс для всех команд в паттерне Command.
+ */
+
 public interface Command {
     void execute(String[] parameters);
 

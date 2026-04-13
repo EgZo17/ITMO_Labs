@@ -3,6 +3,10 @@ package com.labwork.data;
 import java.util.Objects;
 import javax.xml.bind.annotation.*;
 
+/**
+ * Класс, представляющий координаты (X, Y, Z) местоположения человека.
+ */
+
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Location {
 

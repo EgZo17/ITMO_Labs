@@ -1,5 +1,9 @@
 package com.labwork.enums;
 
+/**
+ * Перечисление сигнатур и описаний всех доступных команд.
+ */
+
 public enum CommandDescription {
     HELP("", "Display the help for the available commands."),
     INFO("", "Print information about the collection."),

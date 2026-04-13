@@ -7,6 +7,11 @@ import java.util.Scanner;
 import com.labwork.collection.LabCollection;
 import com.labwork.data.LabWork;
 
+/**
+ * Команда для добавления элемента, если его значение меньше наименьшего элемента коллекции.
+ * Запрашивает у пользователя все необходимые данные через ElementInputManager.
+ */
+
 public class AddIfMin implements Command {
     private LabCollection labCollection = LabCollection.getInstance();
 

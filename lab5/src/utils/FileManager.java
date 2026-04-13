@@ -4,6 +4,10 @@ import com.labwork.collection.LabCollection;
 import javax.xml.bind.*;
 import java.io.*;
 
+/**
+ * Класс для управления файловым вводом-выводом.
+ * Обеспечивает загрузку и сохранение коллекции в XML-файл.
+ */
 
 public class FileManager {
     private static String fileName;

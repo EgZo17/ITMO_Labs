@@ -8,6 +8,11 @@ import java.util.Scanner;
 import com.labwork.collection.LabCollection;
 import com.labwork.data.LabWork;
 
+/**
+ * Команда для удаления всех элементов, меньших заданного.
+ * Запрашивает у пользователя все необходимые данные через ElementInputManager.
+ */
+
 public class RemoveLower implements Command {
     private LabCollection labCollection = LabCollection.getInstance();
 

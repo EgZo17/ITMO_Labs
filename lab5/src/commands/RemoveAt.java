@@ -3,6 +3,10 @@ package com.labwork.commands;
 import com.labwork.utils.Command;
 import com.labwork.collection.LabCollection;
 
+/**
+ * Команда для удаления элемента по индексу в коллекции.
+ */
+
 public class RemoveAt implements Command {
     private LabCollection labCollection = LabCollection.getInstance();
     private int index;

@@ -7,6 +7,11 @@ import java.util.Scanner;
 import com.labwork.collection.LabCollection;
 import com.labwork.data.LabWork;
 
+/**
+ * Команда для добавления новой лабораторной работы в коллекцию.
+ * Запрашивает у пользователя все необходимые данные через ElementInputManager.
+ */
+
 public class Add implements Command {
     private LabCollection labCollection = LabCollection.getInstance();
 

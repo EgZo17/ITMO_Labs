@@ -5,6 +5,10 @@ import javax.xml.bind.JAXBException;
 import com.labwork.utils.Command;
 import com.labwork.utils.FileManager;
 
+/**
+ * Команда для сохранения коллекции в XML-файл.
+ */
+
 public class Save implements Command {
     public Save() {}
 

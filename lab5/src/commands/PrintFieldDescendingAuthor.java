@@ -7,6 +7,10 @@ import com.labwork.collection.LabCollection;
 import com.labwork.data.LabWork;
 import com.labwork.data.Person;
 
+/**
+ * Команда для вывода всех значений поля author в порядке убывания.
+ */
+
 public class PrintFieldDescendingAuthor implements Command {
     private LabCollection labCollection = LabCollection.getInstance();
 

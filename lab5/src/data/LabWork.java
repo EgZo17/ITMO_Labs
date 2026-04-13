@@ -8,6 +8,13 @@ import javax.xml.bind.annotation.*;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import com.labwork.xml.LocalDateAdapter;
 
+/**
+ * Класс, представляющий лабораторную работу.
+ * Содержит информацию о работе: ID, название, координаты, дату создания,
+ * минимальный балл, сложность и автора.
+ * Реализует Comparable для сравнения по названию и автору.
+ */
+
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(propOrder = {"id", "name", "coordinates", "creationDate", "minimalPoint", "difficulty", "author"})
 public class LabWork implements Comparable<LabWork> {

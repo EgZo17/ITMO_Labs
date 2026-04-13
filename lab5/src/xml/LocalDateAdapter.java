@@ -5,8 +5,10 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 /**
- * Адаптер для JAXB, позволяющий сериализовать/десериализовать LocalDate
+ * JAXB-адаптер для сериализации и десериализации LocalDate в XML.
+ * Преобразует LocalDate в строку формата ISO и обратно.
  */
+
 public class LocalDateAdapter extends XmlAdapter<String, LocalDate> {
     
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ISO_LOCAL_DATE;

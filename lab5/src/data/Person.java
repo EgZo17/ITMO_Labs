@@ -5,6 +5,11 @@ import java.util.Objects;
 import com.labwork.enums.Color;
 import javax.xml.bind.annotation.*;
 
+/**
+ * Класс, представляющий автора лабораторной работы.
+ * Содержит имя, рост, цвет глаз и местоположение автора.
+ */
+
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Person implements Comparable<Person> {
 

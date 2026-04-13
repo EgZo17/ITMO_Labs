@@ -3,6 +3,11 @@ package com.labwork.utils;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Класс-инвокер для управления командами в паттерне Command.
+ * Регистрирует команды и выполняет их по строковому вводу.
+ */
+
 public class Invoker {
     private Map<String, Command> commands = new HashMap<>();
     private boolean isRunning = true;
